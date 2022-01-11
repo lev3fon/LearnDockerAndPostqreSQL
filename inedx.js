@@ -13,7 +13,7 @@ app.listen(port, () => {
 })
 
 
-const sequelize = new Sequelize('database', 'postgres', '12345', {
+const sequelize = new Sequelize('test-db', 'test-user', '123', {
     host: "localhost", //your server
     port: 5432, //server port
     dialect: 'postgres'
