@@ -7,17 +7,6 @@ const express = require('express');
 const app = express();
 const port = 3000;
 
-app.get('/time', (req, res) => {
-    const now = new Date();
-    res.send(now);
-})
-
-app.listen(port, () => {
-    console.log(`Example app listening at http://localhost:${port}`);
-})
-
-// const sequelize = new Sequelize('postgres://test-user:123@localhost:5432/test-db')
-
 const sequelize = new Sequelize('test-db', 'test-user', '123', {
     host: "localhost", //your server
     port: 6432, //server port
@@ -26,13 +15,14 @@ const sequelize = new Sequelize('test-db', 'test-user', '123', {
 
 const RequestLog = sequelize.define('RequestLog', {
     time: {
-        type: DataTypes.STRING
+        type: DataTypes.STRING //DataTypes.DATETIME
     },
     userAgent: {
         type: DataTypes.STRING
     }
 } , {
-    tableName: 'RequestLogs'
+    tableName: 'RequestLogs',
+    // timestamp: false //потом проверь)
 })
 
 
@@ -57,3 +47,18 @@ const createModel = async () => {
 }
 
 createModel();
+
+app.get('/time', async (req, res) => {
+    console.log('я тут')
+    const now = new Date();
+    const newRequestLog = await RequestLog.create({ time: now.toString(), userAgent: req.get('user-agent') });
+    await RequestLog.sync({alter: true});
+    console.log('вроде добавил...');
+    res.send(now);
+})
+
+app.listen(port, () => {
+    console.log(`Example app listening at http://localhost:${port}`);
+})
+
+// const sequelize = new Sequelize('postgres://test-user:123@localhost:5432/test-db')
