@@ -49,8 +49,11 @@ const testConnection = async () => {
 }
 // console.log(RequestLog == sequelize.models.RequestLog);
 
-const crreateModel = async () => {
+const createModel = async () => {
     if(testConnection()){
-
+        await RequestLog.sync({alter: true});
+        console.log('(пере)создал таблицу');
     }
 }
+
+createModel();
