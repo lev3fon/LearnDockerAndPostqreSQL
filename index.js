@@ -21,7 +21,7 @@ const RequestLog = sequelize.define('RequestLog', {
     }
 } , {
     tableName: 'RequestLogs',
-    timestamp: false //НЕ РАБОТАЕТ(((
+    timestamps: false //НЕ РАБОТАЕТ(((
 })
 
 
