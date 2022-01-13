@@ -1,6 +1,3 @@
-//docker run --name test-pg -p 6432:5432 -e POSTGRES_USER=test-user -e POSTGRES_PASSWORD=123 -e POSTGRES_DB=test-db -d postgres
-//docker run -it --rm -p 5432:5432 --name aboba-pg -e POSTGRES_PASSWORD=12345 postgres:11
-
 const { Sequelize, DataTypes } = require('sequelize');
 const express = require('express');
 const app = express();
