@@ -1,12 +1,13 @@
-const async { getConnection } = require('./dbConnection.js')
-const async { getRequestLogModel } = require('./requestLogModel.js')
+const  getConnection = require('./dbConnection.js')
+const  getRequestLogModel = require('./requestLogModel.js')
 // const { Sequelize, DataTypes } = require('sequelize')
 const express = require('express')
 const app = express()
 const port = 3000
 
-const dbConnection = await getConnection();
-const RequestLog = await getRequestLogModel(dbConnection);
+const dbConnection =  getConnection();
+
+const RequestLog =  getRequestLogModel(await dbConnection);
 
 app.get('/time', async (req, res) => {
     console.log('я тут')
