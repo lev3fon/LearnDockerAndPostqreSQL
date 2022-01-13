@@ -20,7 +20,7 @@ const testConnection = async () => {
 
 const getConnection = async () => {
     if( await testConnection()){
-        Console.log('отдаю подключение')
+        console.log('отдаю подключение')
         return sequelize
     } else {
         throw new Error('Подключится не вышло')

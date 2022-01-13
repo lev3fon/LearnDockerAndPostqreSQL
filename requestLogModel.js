@@ -16,7 +16,7 @@ const getRequestLogModel = async (sequelize) => {
         timestamps: false
     })
 
-    const createModel = async (RequestLog) => {
+    const createModel = async () => {
             try {
                 await RequestLog.sync({alter: true})
             } catch (error) {
