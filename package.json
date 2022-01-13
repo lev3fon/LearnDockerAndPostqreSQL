@@ -1,4 +1,8 @@
 {
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src"
+  },
   "dependencies": {
     "express": "^4.17.2",
     "i": "^0.3.7",
